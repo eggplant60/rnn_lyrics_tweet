@@ -12,7 +12,8 @@ from pymongo import MongoClient
 import mojimoji
 
 #URL_ARTIST_DEFAULT = 'http://www.uta-net.com/artist/684/' # Mr.Children
-URL_ARTIST_DEFAULT = 'https://www.uta-net.com/artist/126/' # BUMP OF CHIKEN
+#URL_ARTIST_DEFAULT = 'https://www.uta-net.com/artist/126/' # BUMP OF CHIKEN
+URL_ARTIST_DEFAULT = 'https://www.uta-net.com/artist/1475/' # スピッツ
 
 
 def main():
@@ -72,10 +73,11 @@ def scrape_song(response):
     TODO: 編曲者がいる場合の対応
     """
     root = lxml.html.fromstring(response.content)
+    #print(response.url, extract_key(response.url), root.cssselect('div.title h2')[0].text)
     song = {'url'      : response.url,
             'key'      : extract_key(response.url),
             'title'    : root.cssselect('div.title h2')[0].text,
-            'artist'   : root.cssselect('div.kashi_artist span[itemprop="title"]')[0].text,
+            'artist'   : root.cssselect('div.kashi_artist span[itemprop="byArtist name"]')[0].text,
             'lyricist' : root.cssselect('div.artist_etc.clearfix h4')[0].text,
             'comporser': root.cssselect('div.artist_etc.clearfix h4')[1].text,
     }
