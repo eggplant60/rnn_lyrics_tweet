@@ -15,17 +15,17 @@
 ## 使い方
 
 1. 歌詞の取得
-   ```./01_scrape_lyrics.py | tee data/lyrics.txt```
+   `./01_scrape_lyrics.py | tee data/lyrics.txt`
 
    ※ ツイートを使う場合は別途ダウンロードして下さい。
 
 2. 取得したテキストの分かち書き
-   ```./start_juman_server.sh```
-   ```./02_get_train_data.sh data/lyrics.txt > train.txt```
+   `./start_juman_server.sh`
+   `./02_get_train_data.sh data/lyrics.txt > train.txt`
 
 3. 学習の実行
-   ```./03_train_ptb.sh -t train.txt -m model.npz```
+   `./03_train_ptb.sh -t train.txt -m model.npz`
 
 4. 生成
-   ```./04_gentxt.py -t train.txt -m model.npz -p "<最初の単語>"```
+   `./04_gentxt.py -t train.txt -m model.npz -p "<最初の単語>"`
    
